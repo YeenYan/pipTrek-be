@@ -1,0 +1,75 @@
+"Input for user login credentials"
+input LoginInput {
+    "User's email address"
+    email: String! @rules(apply: ["required", "email"])
+
+    "User's password"
+    password: String! @rules(apply: ["required", "min:6"])
+}
+
+"Input for admin-only user creation"
+input RegisterInput {
+    "User's full name"
+    name: String! @rules(apply: ["required", "string", "max:255"])
+
+    "User's email address (must be unique)"
+    email: String!
+        @rules(
+            apply: [
+                "required"
+                "string"
+                "email"
+                "max:255"
+                "unique:users,email"
+            ]
+        )
+
+    "Enable two-factor authentication (optional, defaults to false)"
+    two_factor_enabled: Boolean @rules(apply: ["sometimes", "boolean"])
+}
+
+"Input for first-time login password change"
+input ChangePasswordInput {
+    "New password (minimum 8 characters)"
+    password: String!
+        @rules(apply: ["required", "string", "min:8", "confirmed"])
+
+    "Password confirmation (must match password)"
+    password_confirmation: String!
+        @rules(apply: ["required", "string", "min:8"])
+}
+
+"Input for OTP verification"
+input VerifyOtpInput {
+    "User's email address"
+    email: String! @rules(apply: ["required", "email"])
+
+    "6-digit OTP code received via email"
+    otp: String! @rules(apply: ["required", "string", "size:6"])
+}
+
+"Input for resending OTP to a user"
+input ResendOtpInput {
+    "User's email address"
+    email: String! @rules(apply: ["required", "email"])
+}
+
+"Input for requesting a password reset"
+input ForgotPasswordInput {
+    "User's email address"
+    email: String! @rules(apply: ["required", "email"])
+}
+
+"Input for resetting a password with a valid token"
+input ResetPasswordInput {
+    "Password reset token received via email"
+    token: String! @rules(apply: ["required", "string"])
+
+    "New password (minimum 8 characters)"
+    password: String!
+        @rules(apply: ["required", "string", "min:8", "confirmed"])
+
+    "Password confirmation (must match password)"
+    password_confirmation: String!
+        @rules(apply: ["required", "string", "min:8"])
+}

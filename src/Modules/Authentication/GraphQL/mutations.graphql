@@ -1,0 +1,59 @@
+type Mutation {
+    "Login a user"
+    login(input: LoginInput!): JSON
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@login"
+        )
+
+    "Register a new user (Admin only)"
+    register(input: RegisterInput!): RegisterResponse
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@register"
+        )
+
+    "Change password for first-time login users"
+    changePassword(input: ChangePasswordInput!): ChangePasswordResponse
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@changePassword"
+        )
+
+    "Verify OTP code sent to user's email"
+    verifyOtp(input: VerifyOtpInput!): OtpVerificationResponse
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@verifyOtp"
+        )
+
+    "Resend OTP to user's email"
+    resendOtp(input: ResendOtpInput!): JSON
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@resendOtp"
+        )
+
+    "Request a password reset link via email"
+    forgotPassword(input: ForgotPasswordInput!): JSON
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@forgotPassword"
+        )
+
+    "Reset password using a valid reset token"
+    resetPassword(input: ResetPasswordInput!): JSON
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@resetPassword"
+        )
+
+    "Refresh the current JWT token"
+    refreshToken: JSON
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@refreshToken"
+        )
+
+    "Logout the current user by invalidating their JWT token"
+    logout: JSON
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@logout"
+        )
+}

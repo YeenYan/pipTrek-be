@@ -1,0 +1,11 @@
+type Query {
+    """
+    Get the currently authenticated user's profile.
+    Requires a valid JWT token in the Authorization header.
+    """
+    me: User!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@me"
+        )
+}

@@ -1,0 +1,7 @@
+scalar JSON
+    @scalar(class: "Src\\Modules\\Authentication\\GraphQL\\Scalars\\JSON")
+
+#import ../src/Modules/Authentication/GraphQL/inputs.graphql
+#import ../src/Modules/Authentication/GraphQL/types.graphql
+#import ../src/Modules/Authentication/GraphQL/queries.graphql
+#import ../src/Modules/Authentication/GraphQL/mutations.graphql

@@ -1,0 +1,42 @@
+"""
+User Type Definition
+Represents the authenticated user entity with all profile fields.
+"""
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    two_factor_enabled: Boolean!
+    is_first_login: Boolean!
+    created_at: String!
+    updated_at: String!
+}
+
+"""
+Register Response
+Returned after an admin successfully creates a new user.
+"""
+type RegisterResponse {
+    user: User!
+    message: String!
+}
+
+"""
+Change Password Response
+Returned after a first-time user successfully changes their password.
+"""
+type ChangePasswordResponse {
+    user: User!
+    token: String!
+    message: String!
+}
+
+"""
+OTP Verification Response
+Returned after successful OTP verification.
+"""
+type OtpVerificationResponse {
+    user: User!
+    token: String!
+    message: String!
+}
