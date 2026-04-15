@@ -1,3 +1,8 @@
+# Full Source Code — Repositories
+
+## `src/Modules/Authentication/Infrastructure/Repositories/AuthenticationRepository.php`
+
+```php
 <?php
 
 namespace Src\Modules\Authentication\Infrastructure\Repositories;
@@ -170,3 +175,4 @@ class AuthenticationRepository
         return $query->get()->all();
     }
 }
+```

@@ -1,3 +1,8 @@
+# Full Source Code — Service Provider
+
+## `src/Modules/Authentication/AuthenticationServiceProvider.php`
+
+```php
 <?php
 
 namespace Src\Modules\Authentication;
@@ -34,3 +39,4 @@ class AuthenticationServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/Infrastructure/Database/migrations');
     }
 }
+```

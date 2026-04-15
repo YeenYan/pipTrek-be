@@ -8,4 +8,18 @@ type Query {
         @field(
             resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@me"
         )
+
+    """
+    List all user registration requests.
+    Optionally filter by status ('pending' or 'created').
+    Requires a valid JWT token in the Authorization header.
+    """
+    userRegistrationRequests(
+        "Filter by status: 'pending' or 'created'. Omit to return all."
+        status: String
+    ): [UserRegistrationRequest!]!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@userRegistrationRequests"
+        )
 }

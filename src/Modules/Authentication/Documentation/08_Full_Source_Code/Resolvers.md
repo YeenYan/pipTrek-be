@@ -1,3 +1,8 @@
+# Full Source Code — Resolvers
+
+## `src/Modules/Authentication/GraphQL/Resolvers/AuthResolver.php`
+
+```php
 <?php
 
 namespace Src\Modules\Authentication\GraphQL\Resolvers;
@@ -75,3 +80,4 @@ class AuthResolver
         return $this->registrationRequestService->getAllRequests($status);
     }
 }
+```

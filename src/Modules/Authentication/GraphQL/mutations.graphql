@@ -56,4 +56,12 @@ type Mutation {
         @field(
             resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@logout"
         )
+
+    "Submit a registration request (public, no authentication required)"
+    requestUserRegistration(
+        input: RequestUserRegistrationInput!
+    ): RequestUserRegistrationResponse
+        @field(
+            resolver: "Src\\Modules\\Authentication\\GraphQL\\Resolvers\\AuthResolver@requestUserRegistration"
+        )
 }

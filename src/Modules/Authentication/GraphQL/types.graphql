@@ -40,3 +40,26 @@ type OtpVerificationResponse {
     token: String!
     message: String!
 }
+
+"""
+Request User Registration Response
+Returned after a user submits a registration request.
+"""
+type RequestUserRegistrationResponse {
+    success: Boolean!
+    message: String!
+}
+
+"""
+User Registration Request
+Represents a single entry in the user_registration_requests table.
+"""
+type UserRegistrationRequest {
+    id: ID!
+    username: String!
+    email: String!
+    status: String!
+    user_id: ID
+    created_at: String!
+    updated_at: String!
+}

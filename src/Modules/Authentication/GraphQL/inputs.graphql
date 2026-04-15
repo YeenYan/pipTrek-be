@@ -73,3 +73,12 @@ input ResetPasswordInput {
     password_confirmation: String!
         @rules(apply: ["required", "string", "min:8"])
 }
+
+"Input for requesting user registration (public, no auth required)"
+input RequestUserRegistrationInput {
+    "Desired username (minimum 3 characters)"
+    username: String! @rules(apply: ["required", "string", "min:3", "max:255"])
+
+    "User's email address"
+    email: String! @rules(apply: ["required", "string", "email", "max:255"])
+}
