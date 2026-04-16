@@ -1,0 +1,58 @@
+"Input for creating a new trading account"
+input CreateAccountInput {
+    "Human-readable name for the account"
+    name: String! @rules(apply: ["required", "string", "max:255"])
+
+    "Broker name (e.g., IC Markets, Pepperstone)"
+    broker: String! @rules(apply: ["required", "string", "max:255"])
+
+    "Trading platform (e.g., MT4, MT5, cTrader)"
+    platform: String @rules(apply: ["nullable", "string", "max:100"])
+
+    "Account mode: demo or real"
+    account_mode: String! @rules(apply: ["required", "in:demo,real"])
+
+    "Account type offered by broker (e.g., Standard, ECN, Raw Spread)"
+    account_type: String @rules(apply: ["nullable", "string", "max:100"])
+
+    "Leverage ratio (e.g., 100.00 for 1:100)"
+    leverage: Float! @rules(apply: ["required", "numeric", "min:1"])
+
+    "Initial deposit or opening balance"
+    starting_balance: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Monetary goal for this account"
+    target_amount: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    is_active: Boolean @rules(apply: ["sometimes", "boolean"])
+}
+
+"Input for updating an existing trading account (all fields optional for partial updates)"
+input UpdateAccountInput {
+    "Human-readable name for the account"
+    name: String @rules(apply: ["sometimes", "string", "max:255"])
+
+    "Broker name"
+    broker: String @rules(apply: ["sometimes", "string", "max:255"])
+
+    "Trading platform"
+    platform: String @rules(apply: ["nullable", "string", "max:100"])
+
+    "Account mode: demo or real"
+    account_mode: String @rules(apply: ["sometimes", "in:demo,real"])
+
+    "Account type offered by broker"
+    account_type: String @rules(apply: ["nullable", "string", "max:100"])
+
+    "Leverage ratio"
+    leverage: Float @rules(apply: ["sometimes", "numeric", "min:1"])
+
+    "Initial deposit or opening balance"
+    starting_balance: Float @rules(apply: ["sometimes", "numeric", "min:0"])
+
+    "Monetary goal for this account"
+    target_amount: Float @rules(apply: ["sometimes", "numeric", "min:0"])
+
+    "Whether the account is actively tracked"
+    is_active: Boolean @rules(apply: ["sometimes", "boolean"])
+}

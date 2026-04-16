@@ -61,4 +61,9 @@ class Authentication extends Authenticatable implements JWTSubject
     {
         return (bool) $this->two_factor_enabled;
     }
+
+    public function accounts()
+    {
+        return $this->hasMany(\Src\Modules\Accounts\Domain\Account::class, 'user_id');
+    }
 }

@@ -1,0 +1,36 @@
+"""
+Account Type Definition
+Represents a trading account belonging to an authenticated user.
+"""
+type Account {
+    id: ID!
+    user_id: ID!
+    name: String!
+    broker: String!
+    platform: String
+    account_mode: String!
+    account_type: String
+    leverage: Float!
+    starting_balance: Float!
+    target_amount: Float!
+    is_active: Boolean!
+    created_at: String!
+    updated_at: String!
+}
+
+"""
+Account Response
+Returned after creating, updating, or toggling an account.
+"""
+type AccountResponse {
+    account: Account!
+    message: String!
+}
+
+"""
+Delete Account Response
+Returned after successfully deleting an account.
+"""
+type DeleteAccountResponse {
+    message: String!
+}

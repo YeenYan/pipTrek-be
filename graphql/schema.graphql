@@ -5,3 +5,8 @@ scalar JSON
 #import ../src/Modules/Authentication/GraphQL/types.graphql
 #import ../src/Modules/Authentication/GraphQL/queries.graphql
 #import ../src/Modules/Authentication/GraphQL/mutations.graphql
+
+#import ../src/Modules/Accounts/GraphQL/inputs.graphql
+#import ../src/Modules/Accounts/GraphQL/types.graphql
+#import ../src/Modules/Accounts/GraphQL/queries.graphql
+#import ../src/Modules/Accounts/GraphQL/mutations.graphql

@@ -1,0 +1,41 @@
+extend type Mutation {
+    """
+    Create a new trading account for the authenticated user.
+    The user_id is automatically derived from the JWT token.
+    """
+    createAccount(input: CreateAccountInput!): AccountResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Accounts\\GraphQL\\Resolvers\\AccountResolver@createAccount"
+        )
+
+    """
+    Update an existing trading account.
+    Only the account owner can update it. Supports partial updates.
+    """
+    updateAccount(id: ID!, input: UpdateAccountInput!): AccountResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Accounts\\GraphQL\\Resolvers\\AccountResolver@updateAccount"
+        )
+
+    """
+    Delete a trading account permanently.
+    Only the account owner can delete it.
+    """
+    deleteAccount(id: ID!): DeleteAccountResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Accounts\\GraphQL\\Resolvers\\AccountResolver@deleteAccount"
+        )
+
+    """
+    Toggle the is_active flag on a trading account.
+    Activates an inactive account or deactivates an active one.
+    """
+    toggleAccountActive(id: ID!): AccountResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Accounts\\GraphQL\\Resolvers\\AccountResolver@toggleAccountActive"
+        )
+}

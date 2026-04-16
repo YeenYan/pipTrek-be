@@ -1,0 +1,21 @@
+extend type Query {
+    """
+    Get all trading accounts belonging to the authenticated user.
+    Returns accounts ordered by creation date (newest first).
+    """
+    myAccounts: [Account!]!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Accounts\\GraphQL\\Resolvers\\AccountResolver@myAccounts"
+        )
+
+    """
+    Get a single trading account by ID.
+    Only the account owner can access it.
+    """
+    account("The UUID of the account to retrieve" id: ID!): Account!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Accounts\\GraphQL\\Resolvers\\AccountResolver@account"
+        )
+}
