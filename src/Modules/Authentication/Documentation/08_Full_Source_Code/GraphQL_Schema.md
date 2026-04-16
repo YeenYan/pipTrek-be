@@ -156,6 +156,7 @@ type User {
     email: String!
     two_factor_enabled: Boolean!
     is_first_login: Boolean!
+    roles: [Role!]!
     created_at: String!
     updated_at: String!
 }

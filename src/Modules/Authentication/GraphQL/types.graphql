@@ -1,4 +1,14 @@
 """
+Role Type Definition
+Represents a role assigned to a user, used for frontend RBAC.
+"""
+type Role {
+    id: ID!
+    name: String!
+    guard_name: String!
+}
+
+"""
 User Type Definition
 Represents the authenticated user entity with all profile fields.
 """
@@ -8,6 +18,7 @@ type User {
     email: String!
     two_factor_enabled: Boolean!
     is_first_login: Boolean!
+    roles: [Role!]!
     created_at: String!
     updated_at: String!
 }

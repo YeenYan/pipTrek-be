@@ -251,6 +251,8 @@ class AuthenticationService
                 throw new AuthenticationException('User not found.');
             }
 
+            $user->load('roles');
+
             return $user;
         } catch (JWTException $e) {
             throw new AuthenticationException('Invalid token: ' . $e->getMessage());

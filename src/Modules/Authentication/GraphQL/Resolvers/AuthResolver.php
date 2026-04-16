@@ -54,7 +54,7 @@ class AuthResolver
         return ['message' => 'Successfully logged out.'];
     }
 
-    public function me($_, array $args)
+    public function me($_, array $args): \Src\Modules\Authentication\Domain\Authentication
     {
         return $this->authService->getAuthenticatedUser();
     }
