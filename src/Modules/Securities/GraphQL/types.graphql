@@ -1,0 +1,15 @@
+type Security {
+    id: ID!
+    name: String!
+    created_at: String!
+    updated_at: String!
+}
+
+type SecurityResponse {
+    security: Security!
+    message: String!
+}
+
+type DeleteSecurityResponse {
+    message: String!
+}

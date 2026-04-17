@@ -1,0 +1,20 @@
+extend type Query {
+    """
+    Get all securities.
+    Returns securities ordered by creation date (newest first).
+    """
+    securities: [Security!]!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Securities\\GraphQL\\Resolvers\\SecurityResolver@securities"
+        )
+
+    """
+    Get a single security by ID.
+    """
+    security("The UUID of the security to retrieve" id: ID!): Security!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Securities\\GraphQL\\Resolvers\\SecurityResolver@security"
+        )
+}

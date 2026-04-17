@@ -1,0 +1,9 @@
+input CreateSecurityInput {
+    "Name of the security (e.g., Forex, Stocks)"
+    name: String! @rules(apply: ["required", "string", "max:255"])
+}
+
+input UpdateSecurityInput {
+    "Name of the security (e.g., Forex, Stocks)"
+    name: String @rules(apply: ["sometimes", "string", "max:255"])
+}

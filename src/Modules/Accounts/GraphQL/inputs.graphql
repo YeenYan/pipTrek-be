@@ -25,6 +25,11 @@ input CreateAccountInput {
     target_amount: Float! @rules(apply: ["required", "numeric", "min:0"])
 
     is_active: Boolean @rules(apply: ["sometimes", "boolean"])
+
+    "UUIDs of securities to associate with this account"
+    security_ids: [ID!]
+        @rules(apply: ["sometimes", "array"])
+        @rulesForArray(apply: ["exists:securities,id"])
 }
 
 "Input for updating an existing trading account (all fields optional for partial updates)"
@@ -55,4 +60,9 @@ input UpdateAccountInput {
 
     "Whether the account is actively tracked"
     is_active: Boolean @rules(apply: ["sometimes", "boolean"])
+
+    "UUIDs of securities to sync for this account. Omit to leave unchanged; pass empty array to clear all."
+    security_ids: [ID!]
+        @rules(apply: ["sometimes", "array"])
+        @rulesForArray(apply: ["exists:securities,id"])
 }

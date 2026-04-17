@@ -16,6 +16,9 @@ type Account {
     is_active: Boolean!
     created_at: String!
     updated_at: String!
+
+    "Securities associated with this account"
+    securities: [Security!]!
 }
 
 """

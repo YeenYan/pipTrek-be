@@ -1,0 +1,28 @@
+extend type Mutation {
+    """
+    Create a new security.
+    """
+    createSecurity(input: CreateSecurityInput!): SecurityResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Securities\\GraphQL\\Resolvers\\SecurityResolver@createSecurity"
+        )
+
+    """
+    Update an existing security.
+    """
+    updateSecurity(id: ID!, input: UpdateSecurityInput!): SecurityResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Securities\\GraphQL\\Resolvers\\SecurityResolver@updateSecurity"
+        )
+
+    """
+    Delete a security permanently.
+    """
+    deleteSecurity(id: ID!): DeleteSecurityResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Securities\\GraphQL\\Resolvers\\SecurityResolver@deleteSecurity"
+        )
+}

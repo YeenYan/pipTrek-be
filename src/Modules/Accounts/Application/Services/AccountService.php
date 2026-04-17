@@ -20,10 +20,17 @@ class AccountService
 
         $data['user_id'] = $user->id;
 
+        // Separate security_ids from account fields before persisting
+        $securityIds = $data['security_ids'] ?? [];
+        unset($data['security_ids']);
+
         $account = $this->repository->createAccount($data);
 
+        // Attach selected securities to the newly created account
+        $this->repository->attachSecurities($account, $securityIds);
+
         return [
-            'account' => $account,
+            'account' => $account->load('securities'),
             'message' => 'Account created successfully.',
         ];
     }
@@ -66,10 +73,18 @@ class AccountService
             throw new AccountException('Unauthorized. You do not own this account.');
         }
 
+        // If security_ids is present (even as an empty array), sync the
+        // relationship. Omitting the key entirely leaves securities unchanged.
+        if (array_key_exists('security_ids', $data)) {
+            $securityIds = $data['security_ids'] ?? [];
+            unset($data['security_ids']);
+            $this->repository->syncSecurities($account, $securityIds);
+        }
+
         $account = $this->repository->updateAccount($account, $data);
 
         return [
-            'account' => $account,
+            'account' => $account->load('securities'),
             'message' => 'Account updated successfully.',
         ];
     }
