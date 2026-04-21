@@ -11,8 +11,6 @@ type Account {
     account_mode: String!
     account_type: String
     leverage: Float!
-    starting_balance: Float!
-    target_amount: Float!
     is_active: Boolean!
     created_at: String!
     updated_at: String!
@@ -35,5 +33,24 @@ Delete Account Response
 Returned after successfully deleting an account.
 """
 type DeleteAccountResponse {
+    message: String!
+}
+
+"""
+Account Goals Type Definition
+Represents the financial goals associated with a trading account.
+"""
+type AccountGoal {
+    id: ID!
+    account_id: ID!
+    starting_balance: Float!
+    current_balance: Float
+    target_amount: Float!
+    start_date: String!
+    end_date: String
+}
+
+type AccountGoalResponse {
+    accountGoal: AccountGoal!
     message: String!
 }

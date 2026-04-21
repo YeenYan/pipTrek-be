@@ -1,4 +1,4 @@
-"Input for creating a new trading account"
+# Input for creating a new trading account
 input CreateAccountInput {
     "Human-readable name for the account"
     name: String! @rules(apply: ["required", "string", "max:255"])
@@ -18,21 +18,16 @@ input CreateAccountInput {
     "Leverage ratio (e.g., 100.00 for 1:100)"
     leverage: Float! @rules(apply: ["required", "numeric", "min:1"])
 
-    "Initial deposit or opening balance"
-    starting_balance: Float! @rules(apply: ["required", "numeric", "min:0"])
-
-    "Monetary goal for this account"
-    target_amount: Float! @rules(apply: ["required", "numeric", "min:0"])
-
     is_active: Boolean @rules(apply: ["sometimes", "boolean"])
 
+    # UUIDs of securities to associate with this account
     "UUIDs of securities to associate with this account"
     security_ids: [ID!]
         @rules(apply: ["sometimes", "array"])
         @rulesForArray(apply: ["exists:securities,id"])
 }
 
-"Input for updating an existing trading account (all fields optional for partial updates)"
+# Input for updating an existing trading account (all fields optional for partial updates)
 input UpdateAccountInput {
     "Human-readable name for the account"
     name: String @rules(apply: ["sometimes", "string", "max:255"])
@@ -52,12 +47,6 @@ input UpdateAccountInput {
     "Leverage ratio"
     leverage: Float @rules(apply: ["sometimes", "numeric", "min:1"])
 
-    "Initial deposit or opening balance"
-    starting_balance: Float @rules(apply: ["sometimes", "numeric", "min:0"])
-
-    "Monetary goal for this account"
-    target_amount: Float @rules(apply: ["sometimes", "numeric", "min:0"])
-
     "Whether the account is actively tracked"
     is_active: Boolean @rules(apply: ["sometimes", "boolean"])
 
@@ -65,4 +54,43 @@ input UpdateAccountInput {
     security_ids: [ID!]
         @rules(apply: ["sometimes", "array"])
         @rulesForArray(apply: ["exists:securities,id"])
+}
+
+# Input for creating a new account goal
+input CreateAccountGoalInput {
+    "UUID of the account this goal belongs to"
+    account_id: ID! @rules(apply: ["required", "exists:accounts,id"])
+
+    "Starting balance for the goal"
+    starting_balance: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Current balance for the goal"
+    current_balance: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Target amount for the goal"
+    target_amount: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Start date for the goal"
+    start_date: String! @rules(apply: ["required", "date"])
+
+    "End date for the goal"
+    end_date: String @rules(apply: ["nullable", "date"])
+}
+
+# Input for updating an existing account goal (all fields optional for partial updates)
+input UpdateAccountGoalInput {
+    "Starting balance for the goal"
+    starting_balance: Float @rules(apply: ["sometimes", "numeric", "min:0"])
+
+    "Current balance for the goal"
+    current_balance: Float @rules(apply: ["sometimes", "numeric", "min:0"])
+
+    "Target amount for the goal"
+    target_amount: Float @rules(apply: ["sometimes", "numeric", "min:0"])
+
+    "Start date for the goal"
+    start_date: String @rules(apply: ["sometimes", "date"])
+
+    "End date for the goal"
+    end_date: String @rules(apply: ["nullable", "date"])
 }

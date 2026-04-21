@@ -2,6 +2,7 @@
 
 namespace Src\Modules\Accounts\Domain;
 
+use App\Models\AccountGoals;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -61,5 +62,10 @@ class Account extends Model
         )
         ->using(AccountSecurity::class)
         ->withTimestamps();
+    }
+
+    public function goals()
+    {
+        return $this->belongsToMany(AccountGoals::class, 'account_id');
     }
 }
