@@ -1,0 +1,21 @@
+input CreatePairInput {
+    "Symbol of the pair (e.g., EUR/USD)"
+    symbol: String! @rules(apply: ["required", "string", "max:255"])
+
+    "Base currency of the pair (e.g., EUR)"
+    base_currency: String! @rules(apply: ["required", "string", "max:255"])
+
+    "Quote currency of the pair (e.g., USD)"
+    quote_currency: String! @rules(apply: ["required", "string", "max:255"])
+}
+
+input UpdatePairInput {
+    "Symbol of the pair (e.g., EUR/USD)"
+    symbol: String @rules(apply: ["sometimes", "string", "max:255"])
+
+    "Base currency of the pair (e.g., EUR)"
+    base_currency: String @rules(apply: ["sometimes", "string", "max:255"])
+
+    "Quote currency of the pair (e.g., USD)"
+    quote_currency: String @rules(apply: ["sometimes", "string", "max:255"])
+}

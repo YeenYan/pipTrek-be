@@ -1,0 +1,15 @@
+type Pair {
+    id: ID!
+    symbol: String!
+    base_currency: String!
+    quote_currency: String!
+}
+
+type PairResponse {
+    pair: Pair!
+    message: String!
+}
+
+type DeletePairResponse {
+    message: String!
+}

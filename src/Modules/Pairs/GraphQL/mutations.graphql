@@ -1,0 +1,28 @@
+extend type Mutation {
+    """
+    Create a new pair.
+    """
+    createPair(input: CreatePairInput!): PairResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Pairs\\GraphQL\\Resolvers\\PairResolver@createPair"
+        )
+
+    """
+    Update an existing pair.
+    """
+    updatePair(id: ID!, input: UpdatePairInput!): PairResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Pairs\\GraphQL\\Resolvers\\PairResolver@updatePair"
+        )
+
+    """
+    Delete a pair permanently.
+    """
+    deletePair(id: ID!): DeletePairResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Pairs\\GraphQL\\Resolvers\\PairResolver@deletePair"
+        )
+}

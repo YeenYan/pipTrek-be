@@ -1,0 +1,19 @@
+extend type Query {
+    """
+    Retrieve a list of all pairs.
+    """
+    pairs: [Pair!]!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Pairs\\GraphQL\\Resolvers\\PairResolver@pairs"
+        )
+
+    """
+    Retrieve a single pair by its ID.
+    """
+    pair(id: ID!): Pair
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Pairs\\GraphQL\\Resolvers\\PairResolver@pair"
+        )
+}
