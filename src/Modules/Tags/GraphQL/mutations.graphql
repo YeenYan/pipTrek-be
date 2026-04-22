@@ -1,0 +1,19 @@
+extend type Mutation {
+    createTag(input: CreateTagInput!): TagResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Tags\\GraphQL\\Resolvers\\TagResolver@createTag"
+        )
+
+    updateTag(id: ID!, input: UpdateTagInput!): TagResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Tags\\GraphQL\\Resolvers\\TagResolver@updateTag"
+        )
+
+    deleteTag(id: ID!): DeleteTagResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Tags\\GraphQL\\Resolvers\\TagResolver@deleteTag"
+        )
+}

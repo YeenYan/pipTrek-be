@@ -20,3 +20,8 @@ scalar JSON
 #import ../src/Modules/Pairs/GraphQL/types.graphql
 #import ../src/Modules/Pairs/GraphQL/queries.graphql
 #import ../src/Modules/Pairs/GraphQL/mutations.graphql
+
+#import ../src/Modules/Tags/GraphQL/inputs.graphql
+#import ../src/Modules/Tags/GraphQL/types.graphql
+#import ../src/Modules/Tags/GraphQL/queries.graphql
+#import ../src/Modules/Tags/GraphQL/mutations.graphql

@@ -1,0 +1,19 @@
+extend type Query {
+    """
+    Retrieve a list of all tags.
+    """
+    tags: [Tag!]!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Tags\\GraphQL\\Resolvers\\TagResolver@tags"
+        )
+
+    """
+    Retrieve a single tag by its name.
+    """
+    tag(tag_name: String!): Tag
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Tags\\GraphQL\\Resolvers\\TagResolver@tag"
+        )
+}

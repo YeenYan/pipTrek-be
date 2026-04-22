@@ -1,0 +1,13 @@
+type Tag {
+    id: ID!
+    tag_name: String!
+}
+
+type TagResponse {
+    tag: Tag!
+    message: String!
+}
+
+type DeleteTagResponse {
+    message: String!
+}

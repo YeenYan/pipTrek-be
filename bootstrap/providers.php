@@ -5,11 +5,13 @@ use Src\Modules\Authentication\AuthenticationServiceProvider;
 use Src\Modules\Accounts\AccountsServiceProvider;
 use Src\Modules\Securities\SecuritiesServiceProvider;
 use Src\Modules\Pairs\PairsServiceProvider;
+use Src\Modules\Tags\TagsServiceProvider;
 
 return [
     AppServiceProvider::class,
     AuthenticationServiceProvider::class,
     AccountsServiceProvider::class,
     SecuritiesServiceProvider::class,
-    PairsServiceProvider::class
+    PairsServiceProvider::class,
+    TagsServiceProvider::class,
 ];
