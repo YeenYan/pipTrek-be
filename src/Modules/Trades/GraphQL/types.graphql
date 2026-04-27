@@ -1,0 +1,23 @@
+type Trade {
+    id: ID!
+    account_id: ID!
+    pair_id: ID!
+    trade_type: String!
+    lot_size: Float!
+    entry_price: Float!
+    exit_price: Float!
+    stop_loss: Float!
+    take_profit: Float!
+    profit_loss_amount: Float!
+    balance_before: Float!
+    balance_after: Float!
+}
+
+type TradeResponse {
+    trade: Trade!
+    message: String!
+}
+
+type DeleteTradeResponse {
+    message: String!
+}

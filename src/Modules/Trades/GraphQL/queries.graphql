@@ -1,0 +1,13 @@
+extend type Query {
+    trades: [Trade!]!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Trades\\GraphQL\\Resolvers\\TradeResolver@trades"
+        )
+
+    trade(id: ID!): Trade
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Trades\\GraphQL\\Resolvers\\TradeResolver@trade"
+        )
+}

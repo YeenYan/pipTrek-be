@@ -1,0 +1,44 @@
+input CreateTradeInput {
+    "Account ID"
+    account_id: ID! @rules(apply: ["required", "uuid"])
+
+    "Pair ID"
+    pair_id: ID! @rules(apply: ["required", "uuid"])
+
+    "Trade type"
+    trade_type: String! @rules(apply: ["required", "string", "in:buy,sell"])
+
+    "Lot size"
+    lot_size: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Entry price"
+    entry_price: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Exit price"
+    exit_price: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Stop loss"
+    stop_loss: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Take profit"
+    take_profit: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Profit loss amount"
+    profit_loss_amount: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Balance before"
+    balance_before: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Balance after"
+    balance_after: Float! @rules(apply: ["required", "numeric", "min:0"])
+
+    "Outcome"
+    outcome: String!
+        @rules(apply: ["required", "string", "in:win,lose,breakeven"])
+
+    "Trade datetime"
+    trade_datetime: String! @rules(apply: ["required", "date"])
+
+    "Notes"
+    notes: String @rules(apply: ["nullable", "string", "max:255"])
+}

@@ -25,3 +25,8 @@ scalar JSON
 #import ../src/Modules/Tags/GraphQL/types.graphql
 #import ../src/Modules/Tags/GraphQL/queries.graphql
 #import ../src/Modules/Tags/GraphQL/mutations.graphql
+
+#import ../src/Modules/Trades/GraphQL/inputs.graphql
+#import ../src/Modules/Trades/GraphQL/types.graphql
+#import ../src/Modules/Trades/GraphQL/queries.graphql
+#import ../src/Modules/Trades/GraphQL/mutations.graphql

@@ -6,6 +6,7 @@ use Src\Modules\Accounts\AccountsServiceProvider;
 use Src\Modules\Securities\SecuritiesServiceProvider;
 use Src\Modules\Pairs\PairsServiceProvider;
 use Src\Modules\Tags\TagsServiceProvider;
+use Src\Modules\Trades\TradesServiceProvider;
 
 return [
     AppServiceProvider::class,
@@ -14,4 +15,5 @@ return [
     SecuritiesServiceProvider::class,
     PairsServiceProvider::class,
     TagsServiceProvider::class,
+    TradesServiceProvider::class,
 ];

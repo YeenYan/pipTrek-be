@@ -1,0 +1,19 @@
+extend type Mutation {
+    createTrade(input: CreateTradeInput!): TradeResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Trades\\GraphQL\\Resolvers\\TradeResolver@createTrade"
+        )
+
+    updateTrade(id: ID!, input: UpdateTradeInput!): TradeResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Trades\\GraphQL\\Resolvers\\TradeResolver@updateTrade"
+        )
+
+    deleteTrade(id: ID!): DeleteTradeResponse!
+        @guard(with: ["api"])
+        @field(
+            resolver: "Src\\Modules\\Trades\\GraphQL\\Resolvers\\TradeResolver@deleteTrade"
+        )
+}
